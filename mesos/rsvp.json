@@ -1,0 +1,22 @@
+{
+  "id": "rsvp",
+  "cmd": null,
+  "cpus": 1,
+  "mem": 128,
+  "disk": 0,
+  "instances": 1,
+  "container": {
+    "docker": {
+      "image": "teamcloudyuga/rsvpdata",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "protocol": "tcp",
+          "name": "rsvp"
+        }
+      ]
+    },
+    "type": "DOCKER"
+  }
+}

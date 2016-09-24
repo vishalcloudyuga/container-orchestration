@@ -1,0 +1,32 @@
+{
+  "id": "mongodb",
+  "cmd": null,
+  "cpus": 1,
+  "mem": 128,
+  "disk": 0,
+  "instances": 1,
+  "container": {
+    "docker": {
+      "image": "mongo:3.3",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 27017,
+          "protocol": "tcp",
+          "servicePort": 27017,
+          "name": "mongo"
+        }
+      ],
+      "parameters": []
+    },
+    "type": "DOCKER",
+    "volumes": []
+  },
+  "env": {
+    "MONGODB_USER": "rsvpdata",
+    "MONGODB_DATABASE": "rsvpdata",
+    "MONGODB_PASS": "rsvpdata"
+  },
+  "labels": {},
+  "healthChecks": []
+}
