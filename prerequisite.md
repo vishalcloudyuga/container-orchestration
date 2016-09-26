@@ -1,0 +1,2 @@
+- Download Vagrant
+- Get DigitalOcean plugin
