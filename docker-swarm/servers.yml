@@ -1,7 +1,7 @@
 ---
 - name: manager
-  digitalo_image: fedora-24-x64
+  digitalo_image: ubuntu-16-04-x64
 - name: worker1
-  digitalo_image: fedora-24-x64
+  digitalo_image: ubuntu-16-04-x64
 - name: worker2
-  digitalo_image: fedora-24-x64
+  digitalo_image: ubuntu-16-04-x64

@@ -42,6 +42,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end # config.vm.define
   end # servers.each
 
-#  config.vm.provision :shell, :path => '../scripts/common.sh'
-#  config.vm.provision :shell, :path => '../scripts/docker.sh'
+  config.vm.provision :shell, :path => '../scripts/docker.sh'
 end # Vagrant.configure

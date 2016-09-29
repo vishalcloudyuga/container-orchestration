@@ -7,7 +7,7 @@
   "instances": 1,
   "container": {
     "docker": {
-      "image": "teamcloudyuga/rsvpdata",
+      "image": "teamcloudyuga/rsvpapp",
       "network": "BRIDGE",
       "portMappings": [
         {
