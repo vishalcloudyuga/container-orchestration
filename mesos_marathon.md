@@ -26,3 +26,14 @@
 
 
 ## Demo 
+
+### Clone
+```
+$ git clone https://github.com/cloudyuga/container-orchestration.git
+```
+
+#### Deploy
+```
+$ cd container-orchestration/mesos-marathon
+$ sh delpoy.sh
+```
