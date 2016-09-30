@@ -31,8 +31,6 @@ $ cd docker-swarm
 $ vagrant up --provider=digital_ocean
 $ vagrant ssh manager
 $ git clone https://github.com/cloudyuga/rsvpapp.git
-$ curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-$ chmod +x /usr/local/bin/docker-compose
 ```
 
 On Manager 
@@ -69,12 +67,31 @@ This node joined a swarm as a worker.
 On Manager
 ```
 $ docker info
-$ docker deploy rsvpstack
+$ docker service create alpine ping 8.8.8.8
+$ docker service ps <serviceID>
+$ docker sevice inspect  <serviceID>
+$ docker service update <serviceID> --replicas 4
+$ docker service create --name web --publish 80:80 --replicas 4 nginx
+```
+
+Deploy the RSVP service manually
+```
+$ docker network create --driver overlay rsvpnet
+$ docker service create --name mongodb  -e MONGODB_DATABASE=rsvpdata --network rsvpnet  mongo:3.3
+$ docker service create --name rsvp  -e MONGODB_HOST=mongodb --publish 5000  --network rsvpnet teamcloudyuga/rsvpapp
+$ docker service ps
+$ docker service inspect rsvp
+$ docker service scale rsvp=5
+$ docker service rm rsvp
+$ docker service rm mongodb
+```
+
+Deploy the RSVP service with
+```
+$ docker deploy rsvpapp
 $ docker service ls
-$ docker service ps rsvpstack_web
-$ docker service update --publish-add 8080:5000 rsvpstack_web
-$ docker service inspect rsvpstack_web
-$ docker service scale rsvpstack_web=4
+$ docker service inspect rsvpapp_web
+$ docker service scale rsvpapp_web=4
 ```
 
 $ vagranr destory -f
