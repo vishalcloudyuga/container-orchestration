@@ -18,5 +18,8 @@
       ]
     },
     "type": "DOCKER"
-  }
+  },
+  "env": {
+    "MONGODB_HOST": "mongodb.marathon.mesos",
+  },
 }

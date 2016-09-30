@@ -31,18 +31,19 @@ $ cd docker-swarm
 $ vagrant up --provider=digital_ocean
 $ vagrant ssh manager
 $ git clone https://github.com/cloudyuga/rsvpapp.git
+$ cd rsvpapp
 ```
 
 On Manager 
 ```
-root@manager:~/rsvpapp# docker swarm init --advertise-addr=139.59.27.233
-Swarm initialized: current node (bsizx5e0vd14u3lj3yolukhwe) is now a manager.
+root@manager:~/rsvpapp# docker swarm init --advertise-addr=<MANAGER_IP>
+Swarm initialized: current node (<MANAGER_NODE_ID>) is now a manager.
 
 To add a worker to this swarm, run the following command:
 
     docker swarm join \
-    --token SWMTKN-1-0i5hzr6rehtpnrn7z64k589ugkh9by4itoue5qs0fglnupsit9-ev03cbqquv0injxmpyph3zp67 \
-    139.59.27.233:2377
+    --token SWMTKN-1-<TOKEN> \
+    <MANAGER_IP>:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 ```
@@ -50,16 +51,16 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 On Worker1
 ```
 root@worker1:~# docker swarm join \
->     --token SWMTKN-1-0i5hzr6rehtpnrn7z64k589ugkh9by4itoue5qs0fglnupsit9-ev03cbqquv0injxmpyph3zp67 \
->     139.59.27.233:2377
+>     --token SWMTKN-1-<TOKEN> \
+>     <MANAGER_IP>:2377
 This node joined a swarm as a worker.
 ```
 
 On Worker2
 ```
 root@worker2:~# docker swarm join \
->     --token SWMTKN-1-0i5hzr6rehtpnrn7z64k589ugkh9by4itoue5qs0fglnupsit9-ev03cbqquv0injxmpyph3zp67 \
->     139.59.27.233:2377
+>     --token SWMTKN-1-<TOKEN> \
+>     <MANAGER_IP>:2377
 This node joined a swarm as a worker.
 ```
 
@@ -86,12 +87,30 @@ $ docker service rm rsvp
 $ docker service rm mongodb
 ```
 
-Deploy the RSVP service with
+Deploy the RSVP service with Docker Application Bundle
 ```
 $ docker deploy rsvpapp
 $ docker service ls
 $ docker service inspect rsvpapp_web
 $ docker service scale rsvpapp_web=4
+```
+
+
+Other Examples 
+```
+$ docker service update --image teamcloudyuga/rsvpapp:1 --update-delay 10s rsvp
+$ docker service create --name util --network rsvp --mode global alpine sleep 200
+$ docker service update stateful --constraint-add node.hostname==$HOSTNAME
+$ docker service update stateful --limit-memory 100M
+$ docker service update statful --mount-add type=volume,source=somename,target=/data
+```
+
+Managing Nodes 
+```
+$ docker node update <node_name> --availability <active/pause/drain>
+$ docker swarm promote
+$ docker swarm demote
+$ docker swarm leave
 ```
 
 $ vagranr destory -f
