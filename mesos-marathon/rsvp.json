@@ -20,6 +20,6 @@
     "type": "DOCKER"
   },
   "env": {
-    "MONGODB_HOST": "mongodb.marathon.mesos",
-  },
+    "MONGODB_HOST": "mongodb.marathon.mesos"
+  }
 }
