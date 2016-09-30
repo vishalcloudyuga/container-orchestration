@@ -23,9 +23,7 @@
     "volumes": []
   },
   "env": {
-    "MONGODB_USER": "rsvpdata",
-    "MONGODB_DATABASE": "rsvpdata",
-    "MONGODB_PASS": "rsvpdata"
+    "MONGODB_DATABASE": "rsvpdata"
   },
   "labels": {},
   "healthChecks": []
