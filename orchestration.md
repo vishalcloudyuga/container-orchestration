@@ -34,11 +34,11 @@
 
 ### Single source of truth about configuration for nodes
 
-![](images/)
+![](images/key-value-store.png)
 - Key-Value Store like etcd, consul
 
 ### Network for containers of different nodes to talk to each other
-![](images/)
+![](images/container_network.png)
 - Some form of Overlay network like VxLAN. 
 - With possibility to plug different neworking solution like Calico. 
 - TODO
@@ -47,21 +47,23 @@
 ![](images/)
 
 ### Scheduler to schedule the containers on nodes based on
-![](images/)
+![](images/scheduler.png)
 - Constraints, like run the container where SSD storage is available
 - Affinity
 
 ### Service discovery within the cluster
-![](images/)
-![](images/)
-![](images/)
-![](images/)
+![](images/service-discovery_1.png)
+![](images/service-discovery_2.png)
+![](images/service-discovery_3.png)
+![](images/service-discovery_4.png)
 - Internal DNS server
 - Through environment variables 
 - Load balancer, HA proxy
 
+### Access the services from external world
+![](images/container_network.png)
+
 ### Access to external shared storage
-![](images/)
+![](images/external_storage.png)
 
 #### Volume plugins
-![](images/)
