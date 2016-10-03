@@ -4,18 +4,17 @@
 ## Need for orchestration
 
 ### Container Orchestrator
-
-#### Docker Swarm
-#### Kubernetes
-#### Mesos Marathon
-#### Hashicorp Nomad
-#### Amazon ECS 
-#### Fleet
+- Docker Swarm
+- Kubernetes
+- Mesos Marathon
+- Hashicorp Nomad
+- Amazon ECS 
+- Fleet
 
 ### Container Management Platforms
-### Tectonic
-#### Rancher
-#### Platform9
+- Tectonic
+- Rancher
+- Platform9
 
 
 ## What is needed to do the Container Orchestration
