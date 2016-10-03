@@ -20,6 +20,7 @@
 ## What is needed to do the Container Orchestration
 
 ### Multiple Nodes to be part of a cluster
+![](images/nodes.png)
 
 ### Unique ID/Token to bind all the nodes in a unique cluster
 
