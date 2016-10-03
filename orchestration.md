@@ -1,5 +1,22 @@
 
+## What are containers ?
+
 ## Need for orchestration
+
+### Container Orchestrator
+
+#### Docker Swarm
+#### Kubernetes
+#### Mesos Marathon
+#### Hashicorp Nomad
+#### Amazon ECS 
+#### Fleet
+
+### Container Management Platforms
+### Tectonic
+#### Rancher
+#### Platform9
+
 
 ## What is needed to do the Container Orchestration
 
@@ -8,29 +25,43 @@
 ### Unique ID/Token to bind all the nodes in a unique cluster
 
 ### Container Engines
+
+![](images/container_engine.png)
+
+- runC
 - Docker 
 - Rkt
 
 ### Single source of truth about configuration for nodes
+
+![](images/)
 - Key-Value Store like etcd, consul
 
 ### Network for containers of different nodes to talk to each other
+![](images/)
 - Some form of Overlay network like VxLAN. 
 - With possibility to plug different neworking solution like Calico. 
 - TODO
 
 ### One or more cluster master to manage the cluster and schedule the jobs/tasks  
+![](images/)
 
 ### Scheduler to schedule the containers on nodes based on
+![](images/)
 - Constraints, like run the container where SSD storage is available
 - Affinity
 
 ### Service discovery within the cluster
+![](images/)
+![](images/)
+![](images/)
+![](images/)
 - Internal DNS server
 - Through environment variables 
 - Load balancer, HA proxy
 
 ### Access to external shared storage
+![](images/)
+
 #### Volume plugins
-
-
+![](images/)
