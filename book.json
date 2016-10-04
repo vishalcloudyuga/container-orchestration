@@ -4,7 +4,7 @@
         "disqus": {
             "shortName": "container_orchestration"
         }
-    }
+    },
     "plugins": ["ga"],
     "pluginsConfig": {
         "ga": {
