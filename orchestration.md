@@ -61,7 +61,7 @@
 - Load balancer, HA proxy
 
 ### Access the services from external world
-![](images/container_network.png)
+![](images/external_access.png)
 
 ### Access to external shared storage
 ![](images/external_storage.png)
