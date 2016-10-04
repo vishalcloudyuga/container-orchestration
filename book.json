@@ -5,4 +5,10 @@
             "shortName": "container_orchestration"
         }
     }
+    "plugins": ["ga"],
+    "pluginsConfig": {
+        "ga": {
+            "token": "UA-85159916-1"
+        }
+    }
 }
