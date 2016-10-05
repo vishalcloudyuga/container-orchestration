@@ -4,8 +4,31 @@
 
 ![Swarm Arch](images/swarm_arch.png)
 
-- Manager
-- Nodes
+#### Manager
+##### Scheduling 
+- Resource Availability
+- Labels and constrains 
+ - Engine label and constrains
+ - Node label and constrains
+ - Example  
+  - Labels
+   - env=test, storage=ssh
+  - Constrains 
+   - Nodes
+- Strategy and affinity
+  - In Swarm mode only strategy supported is spread
+
+##### Service Discovery 
+Runs an internal DNS server, which register are services created with Docker Swarm mode.
+
+#### Nodes
+Runs the contaniner using docker-engine.
+
+- Services
+  - tasks
+    - containers
+
+![](https://jpetazzo.github.io/orchestration-workshop/docker-service-create.svg)
 
 ### Defining an application 
 
@@ -74,34 +97,8 @@ networks:
 }
 ```
 
-- Services
-  - tasks
-    - containers
-
-### Scheduler
-- Resource Availability
-- Labels and constraints 
- - Labels
-   - env=test, storage=ssh
- - Constraints 
-   - Nodes
-- Engine Label 
-  - Attached to Docker Engine
-  - Change/modify requires Docker engine restart
-  - Update the /etc/.. docker or docker command line   
-  -  docker service create --constraint engine.labels.storage==ssh
-
-- Node Labels and C
-  - Does not require docker daemon restart
-  - docker node update --label-add security=high
-  - docker node update -label-rm security
-  - docker service create --con  node.labels. 
-
-Strategy and affinity
-  - In Swarm mode only strategy supported is spread
-
-#### High availablity of application 
-- Replicas of contaimers running on multiple nodes. 
+### High availablity of application 
+- Replicas of tasks running on one or more nodes.  
 
 #### Service discovery and Load Balancing an application
 - iptables 
@@ -110,20 +107,45 @@ Strategy and affinity
   - load balancer at transport layer available in the Linux kernel
 
 #### Autoscaling an application 
+- No inbuild primitive yet.  
 
 #### Rolling upgrade and rollback of an application 
+```
+$ docker service update --image teamcloudyuga/rsvpapp:1 --update-delay 10s rsvp
+```
 
 #### Internally connecting to other application 
+- Each service get registred with the internal discovery service
+- Applications can contact other using service VIP 
 
 #### Networking option to connect applications with-in the cluster  
 - Overlay network
 
 #### Accessing the application from external world 
-- 
+- Once a service publishes a port, routing mesh maps the published port on all the nodes
+- Any external client can query the published port on any nodes to reach the desired service 
+- A Load Balancer (HAProxy/Nginx) can be configured to map an endpoint to the pubished port on the nodes of the cluster.
+
+![ingress-lb](https://docs.docker.com/engine/swarm/images/ingress-lb.png)
 
 #### Managing storage for application
+- **bind mounts** 
+```
+$ docker service create \
+  --name my-service \
+  --mount type=bind,source=/path/on/host,destination=/path/in/container \
+  nginx:alpine
+```
+- **named volumes**
+```
+$ docker service create \
+  --name my-service \
+  --replicas 3 \
+  --mount type=volume,source=my-volume,destination=/path/in/container,volume-label="color=red",volume-label="shape=round" \
+  nginx:alpine
+```
 
-##### Volume Plugins
+Detailed docs are available [here](https://github.com/docker/docker/blob/master/docs/reference/commandline/service_create.md#add-bind-mounts-or-volumes). 
 
 ## Demo 
 
