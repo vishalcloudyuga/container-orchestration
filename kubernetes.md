@@ -3,7 +3,91 @@
 
 ### Components
 
-#### Defining an application 
+### Defining an application 
+
+#### Deployments
+
+#### MongoDB
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rsvp-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        appdb: rsvpdb
+    spec:
+      containers:
+      - name: rsvpd-db
+        image: mongo:3.3
+        env:
+        - name: MONGODB_DATABASE
+          value: rsvpdata
+        ports:
+        - containerPort: 27017
+```
+#### RSVP App
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rsvp
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: rsvp
+    spec:
+      containers:
+      - name: rsvp-app
+        image: teamcloudyuga/rsvpapp
+        env:
+        - name: MONGODB_HOST
+          value: mongodb
+        ports:
+        - containerPort: 5000
+```
+
+#### Services
+
+#### MongoDB
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  labels:
+    app: rsvpdb
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+  selector:
+    appdb: rsvpdb
+```
+
+
+#### RSVP App
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: rsvp
+  labels:
+    app: rsvp
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+    protocol: TCP
+  selector:
+    app: rsvp
+```
 
 #### High availablity of application 
 

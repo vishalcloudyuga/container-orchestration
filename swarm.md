@@ -7,7 +7,73 @@
 - Manager
 - Nodes
 
-#### Defining an application 
+### Defining an application 
+
+#### Docker Compose
+```
+version: '2'
+services:
+ mongodb:
+   image: mongo:3.3
+   expose:
+     - "27017"
+   environment:
+    MONGODB_DATABASE: rsvpdata
+   networks:
+    - rsvpnet
+
+ web:
+   image: teamcloudyuga/rsvpapp
+   ports:
+    - "5000:5000"
+   environment:
+    MONGODB_HOST: mongodb
+   networks:
+    - rsvpnet
+
+networks:
+  rsvpnet:
+```
+
+#### Docker Application Bundle
+```
+{
+  "Services": {
+    "mongodb": {
+      "Env": [
+        "MONGODB_DATABASE=rsvpdata"
+      ],
+      "Image": "mongo@sha256:919d22a962b1913a2f57cbcd772689b4061cc05a7ccdf32a1900b58462c351d4",
+      "Networks": [
+        "rsvpnet"
+      ],
+      "Ports": [
+        {
+          "Port": 27017,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    "web": {
+      "Env": [
+        "MONGODB_HOST=mongodb"
+      ],
+      "Image": "teamcloudyuga/rsvpapp@sha256:06923b50d69ee693ea4b3fc156f720d672a56508a3d66b0fe6f558715624e019",
+      "Networks": [
+        "rsvpnet"
+      ],
+      "Ports": [
+        {
+          "Port": 5000,
+          "Protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "Version": "0.1"
+}
+```
+
 - Services
   - tasks
     - containers
