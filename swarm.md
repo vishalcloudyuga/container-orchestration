@@ -98,7 +98,9 @@ networks:
 ```
 
 ### High availablity of application 
-- Replicas of tasks running on one or more nodes.  
+- Replicas of tasks running 
+- Multiple nodes
+- Multiple master
 
 #### Service discovery and Load Balancing an application
 - iptables 

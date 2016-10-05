@@ -9,9 +9,31 @@
 
 #### Nodes
 ### Kubelet
+### kube-proxy
 ### Container Engine
 
 #### Key/Value Store
+
+### Key Concepts
+- Containers
+- Pod
+- Label
+- Selector
+- Replication Controllers
+- Replica Sets
+- Deployment
+- Services
+- Volumes
+
+### Advance Resources
+- Namespaces
+- ConfigMaps
+- Secrets
+- Batch Jobs
+- PetSets
+- DaemoncSet
+- Ingress 
+
 
 ### Defining an application 
 
@@ -90,7 +112,7 @@ metadata:
   labels:
     app: rsvp
 spec:
-  type: LoadBalancer
+  type: NodePort 
   ports:
   - port: 80
     targetPort: 5000
@@ -100,12 +122,27 @@ spec:
 ```
 
 #### High availablity of application 
+- Pods Replicas
+- Multiple nodes
+- Multiple master
 
 #### Service discovery of applications 
+- Services get registred with a DNS, which each node can access. 
+- With default installation, *kube-dns* service get delpoyed which
+ - registers new service's VIP
+ - resolves name to VIP 
 
 #### Load Balancing an application
+- Internal
+  - kube-proxy
+![kube_proxy](images/kube_proxy.png)
+- External
+![k8s_external_access](images/k8s_external_access.png)
 
 #### Autoscaling an application 
+- Horizontal Pod Scaling 
+ - Based on CPU usage now which uses heapster to collect CPU utilization.
+ - Custom matrics support is coming
 
 #### Rolling upgrade and rollback of an application 
 
@@ -114,6 +151,10 @@ spec:
 #### Networking option to connect applications with-in the cluster  
 
 #### Accessing the application from external world 
+- LoadBalancer (requires Cloud Provider's support)
+- NodePort
+- External IP
+- Igress
 
 #### Managing storage for application
 
