@@ -16,9 +16,11 @@
 $  curl -fsSL https://experimental.docker.com/ | sh 
 ```
 - Install [Docker Compose](https://docs.docker.com/compose/) on one of the VM  
+
 ```
 $ curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-\`uname -s\`-\`uname -m\` > /usr/local/bin/docker-compose
 $ chmod +x /usr/local/bin/docker-compose
+```
 
 - Install and configure [Minikube](https://github.com/kubernetes/minikube)
 ```
