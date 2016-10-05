@@ -3,6 +3,16 @@
 
 ### Components
 
+#### Master
+##### Apiserver
+##### Schedulder
+
+#### Nodes
+### Kubelet
+### Container Engine
+
+#### Key/Value Store
+
 ### Defining an application 
 
 #### Deployments
