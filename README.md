@@ -21,9 +21,7 @@ $  curl -fsSL https://experimental.docker.com/ | sh
 $ curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-\`uname -s\`-\`uname -m\` > /usr/local/bin/docker-compose
 $ chmod +x /usr/local/bin/docker-compose
 ```
-
 - Install and configure [Minikube](https://github.com/kubernetes/minikube)
-```
 - Install [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/) on one of VM
 ```
 $ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.3.6/bin/linux/amd64/kubectl
