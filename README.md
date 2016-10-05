@@ -22,7 +22,7 @@ $ chmod +x /usr/local/bin/docker-compose
 
 - Install and configure [Minikube](https://github.com/kubernetes/minikube)
 ```
-- Install kubectl(http://kubernetes.io/docs/user-guide/kubectl-overview/) on one of VM
+- Install [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/) on one of VM
 ```
 $ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.3.6/bin/linux/amd64/kubectl
 $ chmod +x kubectl
