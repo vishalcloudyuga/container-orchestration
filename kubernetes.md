@@ -1,4 +1,5 @@
 ## Architecture 
+![k8s](kube_arch.png)
 
 ### Components
 

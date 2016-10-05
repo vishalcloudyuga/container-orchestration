@@ -2,13 +2,46 @@
 
 ### Components
 
+![Swarm Arch](images/swarm_arch.png)
+
+- Manager
+- Nodes
+
 #### Defining an application 
+- Services
+  - tasks
+    - containers
+
+### Scheduler
+- Resource Availability
+- Labels and constraints 
+ - Labels
+   - env=test, storage=ssh
+ - Constraints 
+   - Nodes
+- Engine Label 
+  - Attached to Docker Engine
+  - Change/modify requires Docker engine restart
+  - Update the /etc/.. docker or docker command line   
+  -  docker service create --constraint engine.labels.storage==ssh
+
+- Node Labels and C
+  - Does not require docker daemon restart
+  - docker node update --label-add security=high
+  - docker node update -label-rm security
+  - docker service create --con  node.labels. 
+
+Strategy and affinity
+  - In Swarm mode only strategy supported is spread
 
 #### High availablity of application 
+- Replicas of contaimers running on multiple nodes. 
 
-#### Service discovery of applications 
-
-#### Load Balancing an application
+#### Service discovery and Load Balancing an application
+- iptables 
+  - classifies, modify and take decisions based on the packet
+- IPVS
+  - load balancer at transport layer available in the Linux kernel
 
 #### Autoscaling an application 
 
@@ -17,8 +50,10 @@
 #### Internally connecting to other application 
 
 #### Networking option to connect applications with-in the cluster  
+- Overlay network
 
 #### Accessing the application from external world 
+- 
 
 #### Managing storage for application
 
