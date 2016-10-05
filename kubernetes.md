@@ -1,5 +1,5 @@
 ## Architecture 
-![k8s](kube_arch.png)
+![k8s](images/kube_arch.png)
 
 ### Components
 
