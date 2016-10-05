@@ -1,5 +1,5 @@
 
-![logo](cylogo.png)
+![logo](images/cylogo.png)
 
 **Yuga** means epoch or era and this is definitely a Cloud era. Guru means Teacher.
 
