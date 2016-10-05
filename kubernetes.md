@@ -145,10 +145,14 @@ spec:
  - Custom matrics support is coming
 
 #### Rolling upgrade and rollback of an application 
+- Using Deployments
 
 #### Internally connecting to other application 
+- using serivce VIP  
 
 #### Networking option to connect applications with-in the cluster  
+- Flat Networking
+- All containers talks to other containers without NAT
 
 #### Accessing the application from external world 
 - LoadBalancer (requires Cloud Provider's support)
@@ -157,8 +161,30 @@ spec:
 - Igress
 
 #### Managing storage for application
+- Volumes are per pod. Even if container in a pod goes down, volume exists.
+- To use a volume, a pod specifies what volumes to provide for the pod (the
+[`spec.volumes`](http://kubernetes.io/kubernetes/third_party/swagger-ui/#!/v1/createPod)
+field) and where to mount those into containers(the
+[`spec.containers.volumeMounts`](http://kubernetes.io/kubernetes/third_party/swagger-ui/#!/v1/createPod)
+field).
 
-##### Volume Plugins
+#####  Supported Volumes
+   * `emptyDir`
+   * `hostPath`
+   * `gcePersistentDisk`
+   * `awsElasticBlockStore`
+   * `nfs`
+   * `iscsi`
+   * `flocker`
+   * `glusterfs`
+   * `rbd`
+   * `cephfs`
+   * `gitRepo`
+   * `secret`
+   * `persistentVolumeClaim`
+   * `downwardAPI`
+   * `azureFileVolume`
+   * `vsphereVolume`
 
 
 ## Demo 

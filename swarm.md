@@ -122,6 +122,7 @@ $ docker service update --image teamcloudyuga/rsvpapp:1 --update-delay 10s rsvp
 
 #### Networking option to connect applications with-in the cluster  
 - Overlay network
+- Network Plugins
 
 #### Accessing the application from external world 
 - Once a service publishes a port, routing mesh maps the published port on all the nodes
