@@ -1,10 +1,22 @@
 ## Architecture 
 
+[Mesos Arch](http://mesos.apache.org/assets/img/documentation/architecture3.jpg)
+
 ### Components
+- Mesos Master
+- Mesos Agent Nodes
+- Zookeeper 
+- Frameworks
+ - Marathon
+ - Chronos
+ - ...
 
 ### Defining an application 
+- Individual app
+- Application Group
 
-#### Database
+#### RSVP App
+##### Database
 ```
 {
   "id": "mongodb",
@@ -38,7 +50,7 @@
 }
 ```
 
-#### RSVP
+##### RSVP
 ```
 {
   "id": "rsvp",
@@ -66,15 +78,17 @@
   }
 }
 ```
-```  
 
 #### High availablity of application 
+- Application scales on multiple slave nodes 
 
-#### Service discovery of applications 
-
-#### Load Balancing an application
+#### Service discovery and Load Balancing an application
+- [Mesos-DNS](https://github.com/mesosphere/mesos-dns) - provides service discovery through the domain name system (DNS).
+- [Marathon-lb](https://github.com/mesosphere/marathon-lb) - provides port-based service discovery using HAProxy.    
 
 #### Autoscaling an application 
+- Requests Per Second (RPS) based [marathon based autoscale](https://github.com/mesosphere/marathon-lb-autoscale)
+- [CPU and Memory based auto-scaling](https://docs.mesosphere.com/1.7/usage/tutorials/autoscaling/cpu-memory/) 
 
 #### Rolling upgrade and rollback of an application 
 
@@ -82,11 +96,14 @@
 
 #### Networking option to connect applications with-in the cluster  
 
+
 #### Accessing the application from external world 
 
 #### Managing storage for application
-
-##### Volume Plugins
+- Persistent Local volume
+- External Persistent volumes
+ - Amazon EBS
+ - [Experimental Flocker Plugin](https://docs.clusterhq.com/en/latest/mesos-integration/index.html) 
 
 
 ## Demo 
