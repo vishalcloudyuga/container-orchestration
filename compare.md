@@ -22,7 +22,7 @@
 - Rollback feature
 - Cluster Federation
 
-### Disadvantage
+### Not so Pro 
 - No concepts of Pods
 
 ## Kubernetes
@@ -33,8 +33,12 @@
 - updates and maintenance
 
 ### Features which are coming 
+- kubelet TLS bootstrap
+- tool to bootstrap kubernetes (kubeadm)
+- Service LB
+- and [many more](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md) 
 
-### Disadvantage
+### Not so Pro 
 - Setup is hard as compared to Docker Swarm. Work is progress to make easier.  
 
 ## Mesos (Marathon)
@@ -45,5 +49,5 @@
 - Used by large companies 
   - Twitter, AirBnb
 
-### Disadvantage
+### Not so Pro 
 A bit difficult to setup 
