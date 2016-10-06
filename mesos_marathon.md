@@ -104,7 +104,7 @@ But with DC/OS 1.8 with Marathon 1.3
 - DNS Based Service Addresses for Load Balanced Virtual IPs
 
 #### Accessing the application from external world 
-- 
+- Using Load Balancer like HAProxy 
 
 #### Managing storage for application
 - Persistent Local volume
