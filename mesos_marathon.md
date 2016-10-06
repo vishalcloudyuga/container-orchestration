@@ -91,13 +91,20 @@
 - [CPU and Memory based auto-scaling](https://docs.mesosphere.com/1.7/usage/tutorials/autoscaling/cpu-memory/) 
 
 #### Rolling upgrade and rollback of an application 
+- [Rolling Restarts](https://mesosphere.github.io/marathon/docs/deployments.html#rolling-restarts) with **minimumHealthCapacity** option.
 
 #### Internally connecting to other application 
-
 #### Networking option to connect applications with-in the cluster  
+- Marathon's Docker integration maps conatiner's port to hpst port 
+- Container does not get invidual IP address. 
 
+But with DC/OS 1.8 with Marathon 1.3 
+- Service are built-in with Marathon. The native DC/OS Marathon instance UI is now fully integrated with the DC/OS UI.
+- Each container gets an IP address with VxLAN based virual network.
+- DNS Based Service Addresses for Load Balanced Virtual IPs
 
 #### Accessing the application from external world 
+- 
 
 #### Managing storage for application
 - Persistent Local volume
