@@ -192,14 +192,15 @@ field).
 ### Download *kubectl*
 
 ```
-curl -O  https://storage.googleapis.com/kubernetes-release/release/v1.3.5/bin/linux/amd64/kubectl
-chmod +x kubectl
-mv kubectl /usr/local/bin/kubectl
+$ curl -O  https://storage.googleapis.com/kubernetes-release/release/v1.3.5/bin/linux/amd64/kubectl
+$ chmod +x kubectl
+$ mv kubectl /usr/local/bin/kubectl
 ```
 
 ### Configure *kubectl*
 - Copy the share config file inside ~/.kube 
 ```
+$ mkdie ~/.kube
 $ cp <PATH>/config ~/.kube
 ```
 
@@ -249,6 +250,13 @@ $ kubectl delete deployment my-nginx
 ```
 
 #### Deploying RSVP app
+
+##### Clone the repo
+```
+$ git clone https://github.com/cloudyuga/container-orchestration.git
+$ cd container-orchestration/k8s
+```
+
 ##### Create db
 ```
 $ kubectl create -f rsvp-db.yaml
