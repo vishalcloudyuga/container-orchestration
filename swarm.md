@@ -24,15 +24,18 @@ Runs an internal DNS server, which register are services created with Docker Swa
 #### Nodes
 Runs the contaniner using docker-engine.
 
+
+![](https://jpetazzo.github.io/orchestration-workshop/docker-service-create.svg)
+
+As shown above, with Docker Swarm mode the order of creation is following:-
 - Services
   - tasks
     - containers
 
-![](https://jpetazzo.github.io/orchestration-workshop/docker-service-create.svg)
-
 ### Defining an application 
 
-#### Docker Compose
+#### RSVP application
+##### Docker Compose
 ```
 version: '2'
 services:
@@ -58,7 +61,7 @@ networks:
   rsvpnet:
 ```
 
-#### Docker Application Bundle
+##### Docker Application Bundle
 ```
 {
   "Services": {
@@ -100,7 +103,6 @@ networks:
 ### High availablity of application 
 - Replicas of tasks running 
 - Multiple nodes
-- Multiple master
 
 #### Service discovery and Load Balancing an application
 - iptables 
@@ -151,9 +153,12 @@ $ docker service create \
 Detailed docs are available [here](https://github.com/docker/docker/blob/master/docs/reference/commandline/service_create.md#add-bind-mounts-or-volumes). 
 
 ## Demo 
+Get the 	
 
 ```
+$ git clone https://github.com/cloudyuga/container-orchestration.git
 $ cd docker-swarm
+$ export DO_TOKEN=adfvvfvs............
 $ vagrant up --provider=digital_ocean
 $ vagrant ssh manager
 $ git clone https://github.com/cloudyuga/rsvpapp.git
@@ -206,7 +211,7 @@ Deploy the RSVP service manually
 $ docker network create --driver overlay rsvpnet
 $ docker service create --name mongodb  -e MONGODB_DATABASE=rsvpdata --network rsvpnet  mongo:3.3
 $ docker service create --name rsvp  -e MONGODB_HOST=mongodb --publish 5000  --network rsvpnet teamcloudyuga/rsvpapp
-$ docker service ps
+$ docker service ls
 $ docker service inspect rsvp
 $ docker service scale rsvp=5
 $ docker service rm rsvp
@@ -224,7 +229,7 @@ $ docker service scale rsvpapp_web=4
 
 Other Examples 
 ```
-$ docker service update --image teamcloudyuga/rsvpapp:1 --update-delay 10s rsvp
+$ docker service update --image teamcloudyuga/rsvpapp:v1 --update-delay 10s rsvp
 $ docker service create --name util --network rsvp --mode global alpine sleep 200
 $ docker service update stateful --constraint-add node.hostname==$HOSTNAME
 $ docker service update stateful --limit-memory 100M
@@ -239,5 +244,7 @@ $ docker swarm demote
 $ docker swarm leave
 ```
 
-$ vagranr destory -f
-
+### Destroy the setup
+```
+$ vagrant destory -f
+```

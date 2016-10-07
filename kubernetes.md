@@ -37,9 +37,9 @@
 
 ### Defining an application 
 
-#### Deployments
-
-#### MongoDB
+#### RSVP Application
+##### Deployments
+###### MongoDB
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -61,7 +61,7 @@ spec:
         ports:
         - containerPort: 27017
 ```
-#### RSVP App
+###### RSVP App
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -84,9 +84,9 @@ spec:
         - containerPort: 5000
 ```
 
-#### Services
+##### Services
 
-#### MongoDB
+###### MongoDB
 ```
 apiVersion: v1
 kind: Service
@@ -103,7 +103,7 @@ spec:
 ```
 
 
-#### RSVP App
+###### RSVP App
 ```
 apiVersion: v1
 kind: Service
@@ -216,13 +216,44 @@ $ export CONTEXT=`kubectl config view | awk '/current-context/ {print $2}'`
 $ kubectl config set-context $CONTEXT --namespace=<username>
 ```
 
-### Create db
+
+### Create a deployment
+```
+$ kubectl run my-nginx --image=nginx --replicas=2 --port=80
+```
+
+### List the pods and deployments
+```
+$ kubectl get pods
+$ kubectl get deployments
+```
+
+### Create a service and expose it using *NodePort*
+```
+$ kubectl expose deployment my-nginx --port=80 --type=NodePort
+```
+
+### List the service
+```
+$ kubectl get services
+```
+
+### Acccess the sevice using NodePort
+
+### Delete service and deloyment
+```
+$ kubectl delete svc my-nginx  
+$ kubectl delete deployment my-nginx
+```
+
+#### Deploying RSVP app
+##### Create db
 ```
 $ kubectl create -f rsvp-db.yaml
 $ kubectl create -f rsvp-db-service.yaml
 ```
 
-### Create Web
+##### Create web frontend
 ```
 $ kubectl create -f rsvp-web.yaml
 $ kubectl create -f rsvp-web-service.yaml

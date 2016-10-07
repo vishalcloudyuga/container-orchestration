@@ -114,15 +114,29 @@ But with DC/OS 1.8 with Marathon 1.3
 
 
 ## Demo 
-
-### Clone
-```
-$ git clone https://github.com/cloudyuga/container-orchestration.git
-```
-
-#### Deploy
+### Deploy Mesos 
 ```
 $ cd container-orchestration/mesos-marathon
+$ export DO_TOKEN=adfvvfvs............
+$ vagrant up --provider=digital_ocean
+$ vagrant ssh
+$ wget https://raw.githubusercontent.com/cloudyuga/container-orchestration/master/mesos-marathon/deploy.sh
+$ https://raw.githubusercontent.com/cloudyuga/container-orchestration/master/mesos-marathon/docker-compose.yml
 $ sh delpoy.sh
 ```
 
+### Deploy the application 
+#### Open the Marathon GUI from your workstation
+```
+$ open http://$HOST_IP:8080 
+```
+
+#### Deploy *mongodb* and *rsvp* containers using following json files
+- [mongodb](https://raw.githubusercontent.com/cloudyuga/container-orchestration/master/mesos-marathon/monogo.json)
+- [RSVP Web app](https://raw.githubusercontent.com/cloudyuga/container-orchestration/master/mesos-marathon/rsvp.json)
+ 
+
+### Destroy the setup
+```
+$ vagrant destory -f
+```

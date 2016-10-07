@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         digitalo.token = ENV['DO_TOKEN']
         digitalo.ssh_key_name = 'linuxconeulab'
         digitalo.image = servers['digitalo_image']
-        digitalo.region = 'blr1'
+        digitalo.region = 'nyc3'
         digitalo.size = '512mb'
       end
       # Configure VMs with RAM and CPUs per settings in servers.yml (VirtualBox)

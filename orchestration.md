@@ -2,6 +2,11 @@
 ## What are containers ?
 
 ## Need for orchestration
+- To run containers at scale
+- Optimally using system resources
+- Fault Tolerance
+- Autoscaling
+- ....
 
 ### Container Orchestrator
 - Docker Swarm
@@ -44,7 +49,6 @@
 - TODO
 
 ### One or more cluster master to manage the cluster and schedule the jobs/tasks  
-![](images/)
 
 ### Scheduler to schedule the containers on nodes based on
 ![](images/scheduler.png)
@@ -66,4 +70,3 @@
 ### Access to external shared storage
 ![](images/external_storage.png)
 
-#### Volume plugins
