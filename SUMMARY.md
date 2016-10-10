@@ -4,7 +4,7 @@
 * [Container Orchestration](orchestration.md)
 * [Sample RSVP app](rsvp.md)
 * [Docker Swarm](swarm.md)
-* [Kubenetes](kubernetes.md)
+* [Kubenertes](kubernetes.md)
 * [Mesos Marathon](mesos_marathon.md)
 * [Comparison](compare.md)
 * [About CloudYuga](cloudyuga.md)

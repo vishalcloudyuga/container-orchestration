@@ -1,7 +1,7 @@
 # Comparison
 
 ## Notes
-- Work is happening very repidly in this space. Tools are borrowing concepts from one another to make them easy for their users.
+- Work is happening very rapidly in this space. Tools are borrowing concepts from one another to make them easy for their users.
 - You would need to understand your requirement and then choose the best fit.
 - BORG and Omega are the geneis for most of the container orchestrator tools.
 
