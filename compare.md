@@ -21,6 +21,7 @@
 - Scheduler updates
 - Rollback feature
 - Cluster Federation
+- Autoscale
 
 ### Not so Pro 
 - No concepts of Pods
